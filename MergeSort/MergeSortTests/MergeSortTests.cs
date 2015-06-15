@@ -46,5 +46,25 @@ namespace MergeSortTests
 
             CollectionAssert.AreEqual( expected, input );
         }
+
+        [TestMethod]
+        public void SortN() {
+            int N = 10000;
+            for( int i = 0; i < N; i++ ) {
+                int[] input = new int[i];
+                Random rnd = new Random();
+                for( int j = 0; j < input.Length; ++j )
+                    input[ j ] = rnd.Next( N );
+                int[] expected = new int[ i ];
+                Array.Copy( input, expected, i );
+                Array.Sort( expected );
+
+                MergeSort.MergeSort.Sort( ref input );
+
+                CollectionAssert.AreEqual( expected, input );
+
+            }
+
+        }
     }
 }
